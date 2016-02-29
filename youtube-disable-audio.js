@@ -19,42 +19,34 @@ var audio_player = unsafeWindow.document.createElement('audio');
 
 GM_xmlhttpRequest({
     method: 'GET',
-		//url: 'https://archive.org/download/MurottalAlQuranRadioRodja756Am',
 		url: 'http://statics.ilmoe.com/alquran/Murottal-Al-Quran-Anak/Muhammad_Thoha_AlJunayd/juz_30/',
     onload: function(resp){			
-			alert(resp.responseText);
+			//alert(resp.responseText);
 			var el = document.createElement('html');
 			el.innerHTML = resp.responseText
-			//var matches = el.querySelectorAll("html body.navia.dirlisting div#wrap div.container.container-ia pre a");
 			var matches = el.querySelectorAll("html body pre a");
 			var index=0;
 			for (var i=0;i<matches.length; i++){
 				if(matches[i].href.endsWith('mp3')){
-  			//if(matches[i].href.endsWith('mursalaat.mp3') || matches[i].href.endsWith('insaan.mp3')){
 					var str_href = matches[i].href;
 					var new_str = str_href.replace("https://www.youtube.com","http://statics.ilmoe.com/alquran/Murottal-Al-Quran-Anak/Muhammad_Thoha_AlJunayd/juz_30");     			
 					mp3_list[index]=new_str;
-					//alert(new_str);
 					index++;
   			}
 			}
 			current_track = mp3_list.length-1;
-			alert(mp3_list[current_track]);
+			//alert(mp3_list[current_track]);
 			audio_player.src = mp3_list[current_track];
-			//audio_player.src = 'http://statics.ilmoe.com/kajian/users/cepu/Adzan-Dan-Murotal-Mahad-Cepu/1-Surat-Alfatihah-Murotal--Ustadz-Abu-Amina--Aljawiy-Mahad-Annashihah-Cepu.mp3'
-			//audio_player.autoplay= true;
-			//audio_player.preload = 'auto';
 			
 			setInterval(function(){
 				if(audio_player.ended){
-					alert("next");
+					//alert("next");
 					current_track--;
 					if(current_track==0){
 						current_track = mp3_list.length-1;
 					}
-					alert(mp3_list[current_track]);
+					//alert(mp3_list[current_track]);
 					audio_player.src = mp3_list[current_track];
-					//audio_player.autoplay= true;
 					audio_player.load();
 					audio_player.play();	
 				}
