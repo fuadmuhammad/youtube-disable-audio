@@ -1,12 +1,10 @@
 // ==UserScript==
-// @name        youtube disable audio
-// @namespace   http://fuad.com
-// @include     http://*.youtube.com*
-// @include     https://*.youtube.com*
+// @name        youtube murottal only
+// @namespace   https://github.com/fuadmuhammad/youtube-disable-audio
+// @include     https://www.youtube.com/*
 // @version     1
 // @grant       GM_xmlhttpRequest
 // ==/UserScript==
-
 var player_id = (unsafeWindow.document.querySelector("#c4-player")                       // Channel video
 			 	|| unsafeWindow.document.querySelector("#player div#movie_player")          // Default HTML5 Video
 			 	|| unsafeWindow.document.querySelector("#player > div.html5-video-player"));
